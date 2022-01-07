@@ -1,0 +1,161 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ProfileActivity"
+    android:background="@color/mainbg">
+
+    <LinearLayout
+        android:id="@+id/firstLinear"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:orientation="horizontal">
+
+
+
+
+        <LinearLayout
+            android:layout_width="409dp"
+            android:layout_height="500dp"
+            android:background="@drawable/rectiangle"
+            android:gravity="center"
+            android:orientation="vertical">
+
+
+            <ImageView
+                android:layout_width="100dp"
+                android:layout_height="100dp"
+                android:src="@drawable/person"
+                android:layout_marginBottom="5dp"
+                />
+
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_marginTop="40dp"
+                android:layout_marginRight="10dp"
+                android:layout_marginLeft="10dp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="NAME:"
+                    android:textColor="@color/textcolor"
+                    />
+                <TextView
+                    android:id="@+id/firstnameChange"
+                    android:layout_marginLeft="47dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="NaN"
+                    android:textColor="@color/textcolor"/>
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_marginTop="10dp"
+                android:layout_marginRight="10dp"
+                android:layout_marginLeft="10dp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="SURNAME: "
+                    android:textColor="@color/textcolor"/>
+                <TextView
+                    android:id="@+id/surnameChange"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="NaN"
+                    android:textColor="@color/textcolor"
+                    android:layout_marginLeft="17dp"/>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_marginTop="10dp"
+                android:layout_marginRight="10dp"
+                android:layout_marginLeft="10dp">
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Email:"
+                    android:textColor="@color/textcolor"/>
+                <TextView
+                    android:id="@+id/userEmail"
+                    android:layout_marginLeft="53dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="NaN"
+                    android:textColor="@color/textcolor"/>
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/secondLinear"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="80dp"
+                android:layout_gravity="bottom"
+                android:orientation="vertical">
+
+
+<!--                <EditText-->
+<!--                    android:id="@+id/newFirstname"-->
+<!--                    android:layout_width="match_parent"-->
+<!--                    android:layout_height="wrap_content"-->
+<!--                    android:hint="Fist Name"-->
+<!--                    android:textColorHint="@color/textcolor"/>-->
+<!--                <EditText-->
+<!--                    android:id="@+id/newSurname"-->
+<!--                    android:textColorHint="@color/textcolor"-->
+<!--                    android:layout_width="match_parent"-->
+<!--                    android:layout_height="wrap_content"-->
+<!--                    android:hint="Last Name"/>-->
+                <androidx.appcompat.widget.AppCompatButton
+                    android:id="@+id/changeDetails"
+                    android:layout_marginLeft="30dp"
+                    android:layout_marginRight="30dp"
+                    android:layout_marginTop="5dp"
+
+                    android:layout_width="match_parent"
+                    android:layout_height="35dp"
+
+                    android:text="Change details"
+                    android:textColor="@color/textcolor"
+                    android:background="@drawable/button"
+                    />
+
+                <androidx.appcompat.widget.AppCompatButton
+                    android:id="@+id/changePassword"
+                    android:layout_marginLeft="30dp"
+                    android:layout_marginRight="30dp"
+                    android:layout_marginTop="15dp"
+
+                    android:layout_width="match_parent"
+                    android:layout_height="35dp"
+
+                    android:text="Change password"
+                    android:textColor="@color/textcolor"
+                    android:background="@drawable/button"
+                    />
+
+            </LinearLayout>
+        </LinearLayout>
+
+
+    </LinearLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

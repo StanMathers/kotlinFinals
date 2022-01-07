@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <item name="headerImageView" type="id" />
+    <item name="movieName" type="id" />
+    <item name="releaseDate" type="id" />
+    <item name="firstCast" type="id" />
+    <item name="secondCast" type="id" />
+    <item name="thirdCast" type="id" />
+</resources>

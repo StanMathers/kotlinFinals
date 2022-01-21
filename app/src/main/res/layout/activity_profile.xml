@@ -152,6 +152,21 @@
                     android:background="@drawable/button"
                     />
 
+
+                <androidx.appcompat.widget.AppCompatButton
+                    android:id="@+id/deleteAccount"
+                    android:layout_marginLeft="30dp"
+                    android:layout_marginRight="30dp"
+                    android:layout_marginTop="15dp"
+
+                    android:layout_width="match_parent"
+                    android:layout_height="35dp"
+
+                    android:text="Delete account"
+                    android:textColor="@color/textcolor"
+                    android:background="@drawable/button_red"
+                    />
+
             </LinearLayout>
         </LinearLayout>
 

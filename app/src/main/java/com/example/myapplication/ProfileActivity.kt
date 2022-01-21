@@ -6,12 +6,14 @@ import android.os.Bundle
 import android.widget.Button
 import android.widget.EditText
 import android.widget.TextView
+import android.widget.Toast
 import androidx.appcompat.widget.AppCompatButton
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.FirebaseDatabase
 import com.google.firebase.database.ValueEventListener
+import com.google.firebase.ktx.Firebase
 import org.w3c.dom.Text
 
 class ProfileActivity : AppCompatActivity() {
@@ -22,6 +24,8 @@ class ProfileActivity : AppCompatActivity() {
     lateinit var currentSurname: TextView
     lateinit var changeDetailsBtn: Button
     lateinit var changePasswordBtn: Button
+
+    lateinit var deleteAccountBtn: Button
 
     lateinit var newFirstname: EditText
     lateinit var newLastname: EditText
@@ -97,20 +101,26 @@ class ProfileActivity : AppCompatActivity() {
             finish()
         }
 
+        val firebaseUser = auth.currentUser
 
+        deleteAccountBtn = findViewById(R.id.deleteAccount)
+        deleteAccountBtn.setOnClickListener {
+            firebaseUser!!.sendEmailVerification()
+                .addOnCompleteListener {
+                    if(it.isSuccessful){
+                        Toast.makeText(this, "Verify email", Toast.LENGTH_LONG).show()
 
+                        // Email Verification
+                        if (firebaseUser.isEmailVerified){
+                            firebaseUser.delete()
+                            startActivity(Intent(this, MainActivity::class.java))
+                            finish()
+                        }
 
+                    }
+                }
 
-
-
-//        saveButton.setOnClickListener {
-//            val first = newFirstname.text.toString()
-//            val last = newLastname.text.toString()
-//
-//            val userInfo = User(first, last)
-//
-//            db.child(auth.currentUser?.uid!!).setValue(userInfo)
-//        }
+        }
 
     }
 

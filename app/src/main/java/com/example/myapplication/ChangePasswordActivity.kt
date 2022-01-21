@@ -1,5 +1,6 @@
 package com.example.myapplication
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Button
@@ -35,18 +36,14 @@ class ChangePasswordActivity : AppCompatActivity() {
 
         changePassword = findViewById(R.id.updatePassword)
         changePassword.setOnClickListener {
-            if(currPass.isEmpty() || newPass.isEmpty() || confNewPass.isEmpty()){
-                Toast.makeText(this, "Please, fill correctly", Toast.LENGTH_LONG).show()
-                Toast.makeText(
-                    this,
-                    currPass + " " + newPass + " " + confNewPass,
-                    Toast.LENGTH_LONG
-                ).show()
-                return@setOnClickListener
-            }
+            Toast.makeText(this, "${currPass} ${newPass} ${confNewPass}", Toast.LENGTH_LONG).show()
 
-            Toast.makeText(this, "Yems", Toast.LENGTH_LONG).show()
         }
+    }
+
+    override fun onBackPressed() {
+        startActivity(Intent(this, ProfileActivity::class.java))
+        finish()
     }
 
 }

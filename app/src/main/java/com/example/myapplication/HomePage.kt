@@ -54,11 +54,6 @@ class HomePage : AppCompatActivity() {
         spidermanHolland2 = findViewById(R.id.spidermanHolland2)
         spidermanHolland3 = findViewById(R.id.spidermanHolland3)
 
-
-
-
-
-
         logout = findViewById(R.id.signOut)
         profile = findViewById(R.id.accountButton)
         profile2 = findViewById(R.id.accountButton2)

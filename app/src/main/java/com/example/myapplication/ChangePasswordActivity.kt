@@ -1,11 +1,14 @@
 package com.example.myapplication
 
+import android.content.ContentValues.TAG
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
 import android.widget.Button
 import android.widget.EditText
 import android.widget.Toast
+import com.google.firebase.auth.EmailAuthProvider
 import com.google.firebase.auth.FirebaseAuth
 
 class ChangePasswordActivity : AppCompatActivity() {
@@ -30,13 +33,50 @@ class ChangePasswordActivity : AppCompatActivity() {
         confirmNewPassword = findViewById(R.id.confirmNewPassword)
 
         // Convert
-        val currPass = currentPassword.text.toString()
-        val newPass = newPassword.text.toString()
-        val confNewPass = confirmNewPassword.text.toString()
+
 
         changePassword = findViewById(R.id.updatePassword)
         changePassword.setOnClickListener {
-            Toast.makeText(this, "${currPass} ${newPass} ${confNewPass}", Toast.LENGTH_LONG).show()
+            val currPass = currentPassword.text.toString()
+            val newPass = newPassword.text.toString()
+            val confNewPass = confirmNewPassword.text.toString()
+
+            if((currPass.isEmpty() || newPass.isEmpty() || confNewPass.isEmpty())){
+                Toast.makeText(this, "Please fill all the graphs", Toast.LENGTH_LONG).show()
+            }
+            else if ((currPass.isNotEmpty() && newPass.isNotEmpty() && confNewPass.isNotEmpty())){
+                if(newPass != confNewPass){
+                    Toast.makeText(this, "Password doesn't match", Toast.LENGTH_LONG).show()
+                }
+                else if(newPass.length < 8 && confNewPass.length < 8){
+                    Toast.makeText(this, "Password lenght must be greater than 8", Toast.LENGTH_LONG).show()
+                }
+                // Else
+                val firebaseUser = auth.currentUser
+//                Toast.makeText(this, firebaseUser!!.email, Toast.LENGTH_LONG).show()
+
+                val credential = EmailAuthProvider
+                    .getCredential(firebaseUser?.email!!, currPass)
+
+                firebaseUser.reauthenticate(credential)
+                    .addOnCompleteListener {
+                        if (it.isSuccessful){
+                            firebaseUser.updatePassword(confNewPass)
+                                .addOnCompleteListener { task ->
+                                    if (task.isSuccessful){
+                                        Toast.makeText(this, "Password changed successfully", Toast.LENGTH_LONG).show()
+                                        startActivity(Intent(this, MainActivity::class.java))
+                                        finish()
+
+                                    }
+                                }
+
+                        }
+                        else{
+                            Toast.makeText(this, "Error", Toast.LENGTH_LONG).show()
+                        }
+                    }
+            }
 
         }
     }
